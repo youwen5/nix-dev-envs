@@ -41,3 +41,14 @@ If you don't want to commit these files, make sure to run the following:
 git update-index --skip-worktree .envrc .direnv
 ```
 
+## Provided environments:
+
+- Go
+- Python (using poetry)
+- Haskell (with Cabal)
+- Haskell (with Stack)
+- Rust (stable, nightly, and beta toolchains)
+- Node/TypeScript (pnpm, yarn, and npm variants)
+- Typst
+- LaTeX (via texlive, with full and minimal variants)
+- Zig
