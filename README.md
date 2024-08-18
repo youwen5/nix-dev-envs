@@ -1,6 +1,9 @@
 # Nix development environments, for various languages
 
-Those of us on NixOS never install language toolkits system-wide, unlike other distros.
+Those of us on NixOS never install language toolkits system-wide, unlike other distros. This means that when we
+work on projects which expect you to bring your own language tools, we don't have things like `node`, `npm`, `cargo`, etc.
+readily available in the shell.
+
 Regrettably, many projects are not taking advantage of Nix for reproducible development environments. You should
 make a big fuss about this in every open source project you are a part of and constantly evangelize about Nix.
 Until Nix is universally adopted, this repository serves as a collection of flakes which provides compilers,
