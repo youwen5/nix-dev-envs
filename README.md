@@ -46,11 +46,11 @@ git update-index --skip-worktree .envrc .direnv
 
 ## Use without downloading
 
-You can also use this in `nix develop` or with `direnv` without installing it.
+You can also use this in `nix develop` or with `direnv` without downloading it locally it.
 Simply reference the flake remotely like so:
 
 ```bash
-nix develop "github:youwen5/nix-dev-envs#<environment"
+nix develop "github:youwen5/nix-dev-envs#<environment>"
 ```
 
 Or in direnv, similarly:
