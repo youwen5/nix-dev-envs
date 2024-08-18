@@ -24,24 +24,28 @@
           go = pkgs.mkShell {
             buildInputs = with pkgs; [
               go
+              gopls
             ];
           };
 
           zig = pkgs.mkShell {
             buildInputs = with pkgs; [
               zig
+              zls
             ];
           };
 
           pythonPoetry = pkgs.mkShell {
             buildInputs = with pkgs; [
               poetry
+              pyright
             ];
           };
 
           haskellStack = pkgs.mkShell {
             buildInputs = with pkgs; [
               haskellPackages.stack
+              haskell-language-server
             ];
           };
 
@@ -49,6 +53,7 @@
             buildInputs = with pkgs; [
               haskellPackages.cabal-install
               ghc
+              haskell-language-server
             ];
           };
 
@@ -75,6 +80,7 @@
               nodejs
               nodePackages_latest.npm
               nodePackages_latest.prettier
+              typescript-language-server
             ];
           };
 
@@ -83,6 +89,7 @@
               nodejs
               nodePackages_latest.pnpm
               nodePackages_latest.prettier
+              typescript-language-server
             ];
           };
 
@@ -91,6 +98,7 @@
               nodejs
               nodePackages_latest.yarn
               nodePackages_latest.prettier
+              typescript-language-server
             ];
           };
 
@@ -105,12 +113,14 @@
           latexFull = pkgs.mkShell {
             buildInputs = with pkgs; [
               texliveFull
+              texlab
             ];
           };
 
           latexMinimal = pkgs.mkShell {
             buildInputs = with pkgs; [
               texliveMinimal
+              texlab
             ];
           };
         };
