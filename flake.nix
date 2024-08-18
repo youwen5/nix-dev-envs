@@ -60,18 +60,21 @@
           rustBeta = pkgs.mkShell {
             buildInputs = with pkgs; [
               rust-bin.beta.latest.default
+              rust-analyzer
             ];
           };
 
           rustNightly = pkgs.mkShell {
             buildInputs = with pkgs; [
               rust-bin.nightly.latest.default
+              rust-analyzer
             ];
           };
 
           rustStable = pkgs.mkShell {
             buildInputs = with pkgs; [
               rust-bin.stable.latest.default
+              rust-analyzer
             ];
           };
 
