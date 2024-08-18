@@ -44,6 +44,25 @@ If you don't want to commit these files, make sure to run the following:
 git update-index --skip-worktree .envrc .direnv
 ```
 
+## Use without downloading
+
+You can also use this in `nix develop` or with `direnv` without installing it.
+Simply reference the flake remotely like so:
+
+```bash
+nix develop "github:youwen5/nix-dev-envs#<environment"
+```
+
+Or in direnv, similarly:
+
+```bash
+use flake "github:youwen5/nix-dev-envs#<environment>"
+```
+
+> [!WARNING]
+> You may not be able to access these environments offline, so you should
+> clone the repo if you want to be able to activate them when offline.
+
 ## Provided environments:
 
 - Go
