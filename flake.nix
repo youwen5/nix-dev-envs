@@ -4,22 +4,28 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    rust-overlay,
-    ...
-  }:
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+      fenix,
+      ...
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
-        overlays = [(import rust-overlay)];
-        pkgs = import nixpkgs {
-          inherit system overlays;
-        };
-      in {
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        rustPkgs = fenix.packages.${system};
+      in
+      {
+        formatter = pkgs.nixfmt-rfc-style;
+
         devShells = {
           go = pkgs.mkShell {
             buildInputs = with pkgs; [
@@ -58,23 +64,20 @@
           };
 
           rustBeta = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              rust-bin.beta.latest.default
-              rust-analyzer
+            buildInputs = [
+              rustPkgs.beta.completeToolchain
             ];
           };
 
           rustNightly = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              rust-bin.nightly.latest.default
-              rust-analyzer
+            buildInputs = [
+              rustPkgs.complete.toolchain
             ];
           };
 
           rustStable = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              rust-bin.stable.latest.default
-              rust-analyzer
+            buildInputs = [
+              rustPkgs.stable.completeToolchain
             ];
           };
 
